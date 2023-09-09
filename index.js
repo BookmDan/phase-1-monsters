@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((response) => response.json())
     .then((data) => {
       // process retrieved data here 
-      const monsterCont = document.getElementById('monster-container');
-
       data.forEach((monster) => {
         displayMonster(monster);
       })
@@ -42,9 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(newMonster),
       })
       .then((response) => response.json())
-        .then((createdMonster) => {
-          displayMonster(createdMonster);
-          monsterForm.reset();
+      .then((createdMonster) => {
+        displayMonster(createdMonster);
+        monsterForm.reset();
       })
       .catch((err) => {
         console.error('Error creating monster:', err);
@@ -52,12 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
   
-  function displayMonster(monster) {
+function displayMonster(monster) {
+    
+    const monsterCont = document.getElementById('monster-container');
     const monsterDiv = document.createElement('div');
     const name = document.createElement('h2');
     const age = document.createElement('p');
     const description = document.createElement('p');
-  
+    
+  // monsterDiv.innerHTML = `
+  // <h3>${userObj.userId}</h3>
+  //     <p>${userObj.title}</p>
+  //     <p>${userObj.body}</p>
+  //   <h2>${monster.}
+  // `
     name.textContent = `Name: ${monster.name}`;
     age.textContent = `Age: ${monster.age}`;
     description.textContent = `Description: ${monster.description}`;
